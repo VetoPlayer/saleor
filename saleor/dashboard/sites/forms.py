@@ -19,12 +19,22 @@ class SiteForm(forms.ModelForm):
 class SiteSettingsForm(forms.ModelForm):
     class Meta:
         model = SiteSettings
-        exclude = ['site']
+        exclude = ['site', 'top_menu', 'bottom_menu']
         labels = {
             'header_text': pgettext_lazy(
                 'Header text', 'Header text'),
             'description': pgettext_lazy(
                 'Description', 'Description')}
+
+
+class SiteSettingsTaxesForm(forms.ModelForm):
+    class Meta:
+        model = SiteSettings
+        fields = ['include_taxes_in_prices']
+        labels = {
+            'include_taxes_in_prices': pgettext_lazy(
+                'Include taxes in prices',
+                'All taxes are included in my prices')}
 
 
 class AuthorizationKeyForm(forms.ModelForm):
